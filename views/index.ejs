@@ -1,0 +1,33 @@
+<%include partials/header%>
+<!-- moved this to header.ejs-->
+  <header>
+    <nav>
+      <ul>
+        <li>
+          <a href="#">New Question</a>
+        </li>
+        <li>
+          <a href="#">About</a>
+        </li>
+      </ul>
+    </nav>
+    <h3 id="header"><a href="/">Icebreakers</a></h3>
+  </header>
+  <main>
+    <div class="jumbotron">
+      <h1>Break the Ice!</h1>
+      <p>Get to know your teammates, friends, study buddies, or anyone else with some fun web-based, video or text, icebreakers!</p>
+    </div>
+    <div class="questions">            
+      <h4><%=questionTwoText%></h4> <!--changed this to variable from controller-->
+      <p><a href="#" class="btn">Make an Icebreaker</a></p>
+      
+      <h4>What olympic sport would you compete in?</h4>
+      <p><a href="#" class="btn">Make an Icebreaker</a></p>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; Flatiron School 2017</p>
+  </footer>
+<!-- moved this to footer.ejs-->
+<% include partials/footer%>
