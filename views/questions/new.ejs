@@ -1,0 +1,20 @@
+<%include ../partials/header%>
+<!-- moved this to header.ejs-->
+  <main>
+    <div class="row marketing">
+      <h4>Add an icebreaker question</h4>
+    </div>
+    <div class="form group">
+      <form method = "POST" action="/">
+        <textarea class="form-control" name="questionContent" rows="3" placeholder="Type the question here">
+        </textarea><!--placeholder is css pseudo tag-->
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <!-- another type of button
+        <input type="submit" value ="submit">
+        -->
+      </form>
+    </div>
+  </main>
+<!-- moved this to footer.ejs-->
+<% include ../partials/footer%>
