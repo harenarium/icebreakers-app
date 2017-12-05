@@ -26,13 +26,29 @@ IcebreakersController.Create = async function(req, resp){
   const emails = req.body.iceBreakerEmails //where us the data
   await IcebreakerResponse.BatchCreateForIcebreaker(icebreaker, emails)
 
-
-
   // question.content = req.body.questionContent
-  // await question.insert()s
-  
-  resp.redirect("/")  
-//  resp.redirect("/icebreaker?secret=${icebreaker.secret}")  
+  // await question.insert()s  
+ resp.redirect(`/icebreakers?secret=${icebreaker.secret}`)  
+}
+
+IcebreakersController.Show = async function(req, resp){
+  const icebreaker = await Icebreaker.FindBySecret(req.query.secret)
+  const icebreakerResponses = await IcebreakerResponse.FindAllByIcebreakerID(icebreaker.id)
+//copy paste 1:25:00 part 2
+  const question = await Question.Find(icebreaker.questionID) 
+  const icebreakerURL = req.protocol + '://' + req.get('host') + req.originalUrl
+  const siteURL = req.protocol + '://' + req.get('host')
+
+  //resp.send(JSON.stringify(icebreaker))
+  //resp.send(JSON.stringify(icebreakerResponses))
+  resp.render("icebreakers/show",{
+  	icebreaker: icebreaker,
+  	icebreakerResponses: icebreakerResponses,
+  	question: question,
+  	icebreakerURL: icebreakerURL,
+  	siteURL:siteURL
+
+  })
 }
 
 module.exports = IcebreakersController;

@@ -1,0 +1,25 @@
+<%include ../partials/header%>
+<!-- moved this to header.ejs-->
+  <main>
+
+    <div class="card">
+      <h4>Your Icebreaker</h4>
+      <p>Each person gets their own secret link to answer the question before they can see anyone else's answer.</p>
+      <p>The link for your Icebreaker is also secret so make sure to write it down: <%=icebreakerURL %> Don't share this it's just for you.</p>
+      <h4>Question: <%=question.content%></h4>
+      <h4>Invitees:</h4>
+      <ul>
+      <%icebreakerResponses.forEach(function(icebreakerResponse){%>
+      	<li>
+	      	<h5><%=icebreakerResponse.email%></h5>
+	      	<p>Their Secret Response Link: <a href='<%= siteURL + "/responses/edit?secret=" + icebreakerResponse.secret%>'><%=siteURL + "/responses/edit?secret=" + icebreakerResponse.secret%></a></p>
+	      	<p><%=icebreakerResponse.responseContent%></p>
+	    </li>
+      <%})%>
+      </ul>
+
+    </div>
+
+  </main>
+<!-- moved this to footer.ejs-->
+<% include ../partials/footer%>

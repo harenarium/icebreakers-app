@@ -1,0 +1,21 @@
+<%include ../partials/header%>
+<!-- moved this to header.ejs-->
+  <main>
+    <div class="row marketing">
+      <h4>You've been invited to answer an Icebreaker!</h4>
+    </div>
+    <div class="card body">
+      <p><h3><%=question.content%></h3></p>
+    </div>
+
+    <div class="form group">
+      <form method = "POST" action="/responses?secret=<%=icebreakerResponse.secret%>">
+        <textarea class="form-control" name="responseContent" rows="3" placeholder="Type the response here">
+        </textarea>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit your answer and see other people's responses!</button>
+      </form>
+    </div>
+  </main>
+<!-- moved this to footer.ejs-->
+<% include ../partials/footer%>

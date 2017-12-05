@@ -9,6 +9,7 @@ const app = express()
 // Load Controllers
 const SiteController = require("./controllers/SiteController.js") //require not requires and need ""
 const IcebreakersController = require("./controllers/IcebreakerController.js")
+const IcebreakerResponseController = require("./controllers/IcebreakerResponseController.js")
 
 //view engine
 app.set('view engine', 'ejs');
@@ -41,7 +42,10 @@ app.get("/questions/new", SiteController.New)
 app.post("/", SiteController.Create)
 app.get("/icebreakers/new", IcebreakersController.New)
 app.post("/icebreakers", IcebreakersController.Create)
-
+app.get("/icebreakers", IcebreakersController.Show)
+app.get("/responses/edit", IcebreakerResponseController.Edit)
+app.post("/responses", IcebreakerResponseController.Update)
+app.get("/responses", IcebreakerResponseController.Show)
 /*SiteController.Index = function(req, resp){
 
 	resp.render('index',{   //resp.send('Hello world!')

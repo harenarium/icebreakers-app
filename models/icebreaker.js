@@ -35,18 +35,33 @@ class Icebreaker{
     })
   }
 
- //  static Find(id){
- //   const sql = "select * FROM icebreakers WHERE id = ?"
+  static FindBySecret(secret){
+   const sql = "select * FROM icebreakers WHERE secret = ?"
 
- //   return new Promise(function(resolve){
- //       db.get(sql, [id], function(err, results){ //want tp ise db.get
- //         const icebreaker = new Icebreaker() //not Icebreaker(results.content) b/c no contructor
- //         icebreaker.id = results.id 
- //         icebreaker.content = results.content
- //         resolve(icebreaker)
- //     })
- //   })
- // }
+   return new Promise(function(resolve){
+       db.get(sql, [secret], function(err, results){ //want tp ise db.get
+         const icebreaker = new Icebreaker() //not Icebreaker(results.content) b/c no contructor
+         icebreaker.id = results.id 
+         icebreaker.questionID = results.question_id
+         resolve(icebreaker)
+     })
+   })
+ }
+
+
+  static Find(id){
+   const sql = "SELECT * FROM icebreakers WHERE id = ?"
+
+   return new Promise(function(resolve){
+       db.get(sql, id, function(err, results){ //want tp ise db.get
+         const icebreaker = new Icebreaker() //not Icebreaker(results.content) b/c no contructor
+         icebreaker.id = results.id 
+         icebreaker.secret = results.secret
+         icebreaker.questionID = results.question_id
+         resolve(icebreaker)
+     })
+   })
+ }
 
  //  static All(id){
 	// 	const sql = "select * FROM icebreakers"

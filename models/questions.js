@@ -34,8 +34,8 @@ class Question{
    const sql = "select * FROM questions WHERE id = ?"
 
    return new Promise(function(resolve){
-       db.get(sql, [id], function(err, results){ //want tp ise db.get
-         const question = new Question() //not Question(results.content) b/c no contructor
+       db.get(sql, [id], function(err, results){ 
+         const question = new Question() 
          question.id = results.id 
          question.content = results.content
          resolve(question)
